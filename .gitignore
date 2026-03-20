@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.env.*
+.idea/
+.vscode/
+dist/
+build/
+*.log
+*.pem
+cert.pem
+key.pem
