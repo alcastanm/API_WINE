@@ -115,7 +115,7 @@ async def auth(data:googleParam,
         return customResponse(data=returnedObj,isSuccess=True,returnedMessage="Well done")
  
     except Exception as e:
-      return customResponse(data=None,isSuccess=False,returnedMessage="There is an Error!!!!")
+      return customResponse(data=None,isSuccess=False,returnedMessage=str(e))
     
 
 
