@@ -38,7 +38,8 @@ app.add_middleware(
                 "http://localhost",
                 "capacitor://localhost",
                 "ionic://localhost",  
-                "https://milliary-polyphyletically-hertha.ngrok-free.dev"      
+                "https://milliary-polyphyletically-hertha.ngrok-free.dev" ,
+                "https://cheers9182.web.app"    
         ],
     allow_credentials=True,
     allow_methods=["*"],
