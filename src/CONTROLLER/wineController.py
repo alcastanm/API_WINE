@@ -61,9 +61,9 @@ async def saveNote( wine_name: str = Form(...),
   
 
 @wineRoute.get("/wines")  
-async def getWineList(filter:str,wine_service:IwineService=Depends(wineService)):  
+async def getWineList(filter:str,mail:str,wine_service:IwineService=Depends(wineService)):  
     try:
-        result = await wine_service.getWineList(filter)
+        result = await wine_service.getWineList(filter,mail)
         return JSONResponse(
             content={
                 "data": jsonable_encoder(result),

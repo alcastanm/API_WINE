@@ -8,5 +8,5 @@ class IwineRepository(ABC):
         pass
     
     @abstractmethod
-    async def getWineList(self,filter:str):
+    async def getWineList(self,filter:str,mail:str):
         pass

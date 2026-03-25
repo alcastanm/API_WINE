@@ -17,15 +17,16 @@ class wineService(IwineService):
     async def saveNote(self,note:DTO_wine_note): 
         return await self.wine_repository.saveNote(note) 
       
-    async def getWineList(self,filter:str):
+    async def getWineList(self,filter:str,mail:str):
       
       regions = await self.region_repository.getRegions()
       
-      winelist = await self.wine_repository.getWineList(filter)
+      winelist = await self.wine_repository.getWineList(filter,mail)
       
-      for item in winelist:
-       reg = next((reg for reg in regions if reg.regions_id == item.regions_id), None)
-       item.region =reg
+      if winelist:
+        for item in winelist:
+          reg = next((reg for reg in regions if reg.regions_id == item.regions_id), None)
+          item.region =reg
       
       
       return winelist

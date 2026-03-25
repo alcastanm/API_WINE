@@ -1,5 +1,5 @@
 from fastapi import Depends
-from sqlalchemy import insert, select
+from sqlalchemy import and_, func, insert, select
 
 from CORE.interfaces_repository.IwineRepository import IwineRepository
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -30,12 +30,13 @@ class wineRepository(IwineRepository):
         
         return True
       
-    async def getWineList(self,filter:str):
+    async def getWineList(self,filter:str,mail:str):
 
       if filter == 'todos':
-        query = select(wine_note)
+        query = select(wine_note).where(func.upper(wine_note.email)==mail.upper())
       else:
-        query = select(wine_note).where(wine_note.wine_type==filter)  
+        query = select(wine_note).where(and_(wine_note.wine_type==filter\
+                                            ,func.upper(wine_note.email)==mail.upper()) ) 
         
       result = (await self.dbConn.execute(query)).scalars().all()
       
