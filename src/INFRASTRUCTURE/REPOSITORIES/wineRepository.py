@@ -41,4 +41,10 @@ class wineRepository(IwineRepository):
       result = (await self.dbConn.execute(query)).scalars().all()
       
             
-      return [DTO_wine_note.model_validate(res) for res in result] if result else None     
+      return [DTO_wine_note.model_validate(res) for res in result] if result else None  
+    
+    async def getNote(self,noteid:int):
+      query = select(wine_note).where(wine_note.wine_note_id==noteid).limit(1)
+      results = (await self.dbConn.execute(query)).scalar()
+      
+      return DTO_wine_note.model_validate(results) if results else None

@@ -10,3 +10,7 @@ class IwineService(ABC):
     @abstractmethod
     async def getWineList(self,filter:str,mail:str):
         pass
+    
+    @abstractmethod
+    async def getNote(self,noteid:int):
+        pass

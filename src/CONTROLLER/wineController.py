@@ -81,4 +81,12 @@ async def getWineList(filter:str,mail:str,wine_service:IwineService=Depends(wine
                 "returnTechnicalMessage": ""
             }
         )
+        
+@wineRoute.get("/getNote") 
+async def getNote(noteid:int,wine_service:IwineService=Depends(wineService)):
+    try:
+      results = await wine_service.getNote(noteid)
+      return customResponse(data=results,isSuccess=True,returnedMessage="Well Done!!!")
+    except Exception as e:
+      return customResponse(data=None,isSuccess=False,returnedMessage=str(e))     
     

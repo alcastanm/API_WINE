@@ -30,3 +30,6 @@ class wineService(IwineService):
       
       
       return winelist
+    
+    async def getNote(self,noteid:int):
+      return await self.wine_repository.getNote(noteid)
