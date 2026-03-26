@@ -34,7 +34,7 @@ class wineRepository(IwineRepository):
     async def updateNote(self,note:DTO_wine_note):
         query = update(wine_note).where(wine_note.wine_note_id == note.wine_note_id).values(wine_name = note.wine_name,
                                         wine_type = note.wine_type,
-                                        photo = note.photo,
+                                        photo = note.photo if note.photo else wine_note.photo,
                                         color_rating = note.color_rating,
                                         aroma_rating = note.aroma_rating,
                                         cuerpo_rating = note.cuerpo_rating,
