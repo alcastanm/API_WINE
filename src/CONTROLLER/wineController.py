@@ -30,12 +30,8 @@ async def saveNote( wine_name: str = Form(...),
                 regionId: int = Form(...),
                 wine_service:IwineService=Depends(wineService)):
     try:
-        
-        
-
-        
         currentDate = datetime.now(timezone.utc)
-        note = DTO_wine_note(wine_name = wine_name,
+        note = DTO_wine_note(   wine_name = wine_name,
                                 wine_type = wine_type,
                                 photo = photo.filename if photo else "",
                                 color_rating = color_rating,
@@ -58,6 +54,50 @@ async def saveNote( wine_name: str = Form(...),
       
     except Exception as e:
       return customResponse(data=None,isSuccess=False,returnedMessage=str(e))
+  
+  
+@wineRoute.post("/Updatewine")
+async def Updatewine(winenoteid:Optional[int]=Form(0),
+                    wine_name: str = Form(...),
+                    wine_type: str = Form(...),
+                    color_rating: Optional[int] = Form(0),
+                    aroma_rating: Optional[int] = Form(0),
+                    cuerpo_rating: Optional[int] = Form(0),
+                    sabor_rating: Optional[int] = Form(0),
+                    final_rating: Optional[int] = Form(0),
+                    notes: Optional[str] = Form(''),
+                    email:str =Form(...),
+                    photo: Optional[UploadFile] = File(None),
+                    regionId: int = Form(...),
+                    wine_service:IwineService=Depends(wineService)):
+    try:
+        currentDate = datetime.now(timezone.utc)
+        note = DTO_wine_note( wine_note_id = winenoteid,
+                              wine_name = wine_name,
+                              wine_type = wine_type,
+                              photo = photo.filename if photo else "",
+                              color_rating = color_rating,
+                              aroma_rating = aroma_rating,
+                              cuerpo_rating = cuerpo_rating,
+                              sabor_rating = sabor_rating,
+                              final_rating = final_rating,
+                              notes = notes,
+                              created_at=currentDate,
+                              email = email,
+                              regions_id = regionId 
+                              )
+        
+        result = await  wine_service.updateNote(note)
+        
+        if result == True:
+            if photo:
+                upldImg = await ImagesManagement.UploadImageCloudinary(photo,'wine')
+        
+        return customResponse(data=result,isSuccess=True,returnedMessage="La nota de cata se modificó")
+    
+    except Exception as e:
+      return customResponse(data=None,isSuccess=False,returnedMessage=str(e))
+  
   
 
 @wineRoute.get("/wines")  

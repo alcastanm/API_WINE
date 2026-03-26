@@ -35,8 +35,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
                 "https://localhost",
-                "http://localhost",
+                "http://localhost:8100",
                 "capacitor://localhost",
+                "https://127.0.0.1:8000",
+                "http://127.0.0.1:8000",
                 "ionic://localhost",  
                 "https://milliary-polyphyletically-hertha.ngrok-free.dev" ,
                 "https://cheers9182.web.app"    

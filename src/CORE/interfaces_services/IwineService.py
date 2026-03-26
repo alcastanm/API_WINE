@@ -8,6 +8,10 @@ class IwineService(ABC):
         pass
     
     @abstractmethod
+    async def updateNote(self,note:DTO_wine_note):
+        pass
+    
+    @abstractmethod
     async def getWineList(self,filter:str,mail:str):
         pass
     

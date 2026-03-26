@@ -17,6 +17,9 @@ class wineService(IwineService):
     async def saveNote(self,note:DTO_wine_note): 
         return await self.wine_repository.saveNote(note) 
       
+    async def updateNote(self,note:DTO_wine_note):
+      return await self.wine_repository.updateNote(note)  
+      
     async def getWineList(self,filter:str,mail:str):
       
       regions = await self.region_repository.getRegions()

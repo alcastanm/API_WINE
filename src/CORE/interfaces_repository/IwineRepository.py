@@ -14,3 +14,7 @@ class IwineRepository(ABC):
     @abstractmethod
     async def getNote(self,noteid:int):
         pass
+    
+    @abstractmethod
+    async def updateNote(self,note:DTO_wine_note):
+        pass

@@ -1,5 +1,5 @@
 from fastapi import Depends
-from sqlalchemy import and_, func, insert, select
+from sqlalchemy import and_, func, insert, select, update
 
 from CORE.interfaces_repository.IwineRepository import IwineRepository
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -29,6 +29,27 @@ class wineRepository(IwineRepository):
         await self.dbConn.commit()
         
         return True
+      
+      
+    async def updateNote(self,note:DTO_wine_note):
+        query = update(wine_note).where(wine_note.wine_note_id == note.wine_note_id).values(wine_name = note.wine_name,
+                                        wine_type = note.wine_type,
+                                        photo = note.photo,
+                                        color_rating = note.color_rating,
+                                        aroma_rating = note.aroma_rating,
+                                        cuerpo_rating = note.cuerpo_rating,
+                                        sabor_rating = note.sabor_rating,
+                                        final_rating = note.final_rating,
+                                        notes = note.notes,
+                                        created_at = note.created_at,
+                                        email = note.email,
+                                        regions_id = note.regions_id)
+        await self.dbConn.execute(query)
+        await self.dbConn.commit()
+        
+        return True
+      
+      
       
     async def getWineList(self,filter:str,mail:str):
 
