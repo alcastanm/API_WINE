@@ -52,12 +52,13 @@ app.add_middleware(
 #Section imports
 from CONTROLLER.authorizationController import authRoute
 from CONTROLLER.wineController import wineRoute
-
+from CONTROLLER.regionController import regionRoute
 # Incluye las rutas definidas en el archivo 'controllers.py'
 #Section include
 
 app.include_router(authRoute)
 app.include_router(wineRoute)
+app.include_router(regionRoute)
 
 
 app.mount("/geojson", StaticFiles(directory="geojson"), name="geojson")

@@ -11,7 +11,7 @@ class regionRepository(IregionRepository):
       self.dbconn = db
       
     async def getRegions(self):
-        query = select(regions) 
+        query = select(regions).where(regions.mapeable).order_by(regions.country,regions.name) 
         
         results = (await self.dbconn.execute(query)).scalars().all()
         
