@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 sys.path.append(str(Path(__file__).resolve().parent))
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -57,3 +58,6 @@ from CONTROLLER.wineController import wineRoute
 
 app.include_router(authRoute)
 app.include_router(wineRoute)
+
+
+app.mount("/geojson", StaticFiles(directory="geojson"), name="geojson")

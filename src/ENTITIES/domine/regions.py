@@ -10,4 +10,6 @@ class regions(Base):
     name =Column(VARCHAR(100),nullable=False)
     country =Column(VARCHAR(100),nullable=False)
     description =Column(TEXT,nullable=False)
-    active =Column(BOOLEAN,nullable=False)    
+    active =Column(BOOLEAN,nullable=False) 
+    mapeable=Column(BOOLEAN,nullable=False)   
+    geojson = Column(VARCHAR(500),nullable=False)

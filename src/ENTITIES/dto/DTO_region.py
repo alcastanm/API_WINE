@@ -9,6 +9,8 @@ class DTO_region(BaseModel):
     country :Optional[str]=None
     description :Optional[str]=None
     active :Optional[bool]=None
+    mapeable:Optional[bool]=None
+    geojson:Optional[str]=None
     
     class Config:
         from_attributes=True
