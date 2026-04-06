@@ -1,6 +1,6 @@
 from typing import Optional
-
 from pydantic import BaseModel
+from ENTITIES.dto.DTO_wineries import DTO_wineries
 
 class DTO_region(BaseModel):
     
@@ -11,6 +11,7 @@ class DTO_region(BaseModel):
     active :Optional[bool]=None
     mapeable:Optional[bool]=None
     geojson:Optional[str]=None
+    wineries:Optional[list[DTO_wineries]]=None   
     
     class Config:
         from_attributes=True
