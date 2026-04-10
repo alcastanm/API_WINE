@@ -12,6 +12,10 @@ class DTO_region(BaseModel):
     mapeable:Optional[bool]=None
     geojson:Optional[str]=None
     wineries:Optional[list[DTO_wineries]]=None   
-    
+    url:Optional[str]=None
+    lat:Optional[float]=None
+    long:Optional[float]=None
+    climate:Optional[float]=None
+    altitude:Optional[float]=None
     class Config:
         from_attributes=True

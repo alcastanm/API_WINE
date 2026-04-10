@@ -20,6 +20,8 @@ class regionService(IregionService):
         for item in regions:
           wineries = await self.wineries_rpository.getWinneriesByRegionId(item.regions_id)
           item.wineries = wineries
+          
+          
         
         return regions 
         

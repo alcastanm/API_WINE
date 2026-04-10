@@ -1,4 +1,4 @@
-from sqlalchemy import BOOLEAN, TEXT, VARCHAR, Column, Integer
+from sqlalchemy import BOOLEAN, TEXT, VARCHAR, Column, Integer,Float
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -13,3 +13,8 @@ class regions(Base):
     active =Column(BOOLEAN,nullable=False) 
     mapeable=Column(BOOLEAN,nullable=False)   
     geojson = Column(VARCHAR(500),nullable=False)
+    url = Column(VARCHAR(1000),nullable=True)
+    lat = Column(Float,nullable=True)
+    long = Column(Float,nullable=True)
+    climate = Column(Float,nullable=True)
+    altitude = Column(Float,nullable=True)
