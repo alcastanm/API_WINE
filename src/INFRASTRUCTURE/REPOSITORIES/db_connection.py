@@ -7,10 +7,10 @@ Base = declarative_base()
 
 
 
-# url =("postgresql+asyncpg://bdpostgress_user:CxZ0rkCUckTkNp0t5B0WQ7zSPBwj6ALl@dpg-d5tv89h4tr6s739kjul0-a.oregon-postgres.render.com/bdpostgress")
+url =("postgresql+asyncpg://bdpostgress_user:CxZ0rkCUckTkNp0t5B0WQ7zSPBwj6ALl@dpg-d5tv89h4tr6s739kjul0-a.oregon-postgres.render.com/bdpostgress")
 
 #esta conexion es para desplegar de forma local contra el front local
-url =("postgresql+asyncpg://postgres:123@localhost:5432/wines")
+# url =("postgresql+asyncpg://postgres:123@localhost:5432/wines")
 # url =("postgresql+asyncpg://wineapp_4umt_user:rju8M9C20bAQJeCE2H2ZE4PCLOJj2hNn@dpg-d71aif6a2pns73f21g50-a.oregon-postgres.render.com/wineapp_4umt")
 
 engine = create_async_engine(
